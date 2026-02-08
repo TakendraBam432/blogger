@@ -23,8 +23,8 @@ body {
 }
 
 h1 {
-    font-size: 3rem;
-    margin: 20px 0;
+    font-size: 2.5rem;
+    margin: 15px 0;
     text-shadow: 2px 2px #ff69b4,4px 4px #ffccff;
     animation: rainbowShadow 5s linear infinite alternate;
     z-index:2;
@@ -39,27 +39,27 @@ h1 {
 }
 
 button {
-    padding: 15px 40px;
-    font-size: 1.3rem;
+    padding: 12px 35px;
+    font-size: 1.2rem;
     border: none;
     border-radius: 25px;
     background: linear-gradient(45deg,#ff69b4,#ffccff);
     color: #fff;
     cursor: pointer;
-    box-shadow: 0 0 20px #fff,0 0 40px #ff6f61;
+    box-shadow: 0 0 15px #fff,0 0 30px #ff6f61;
     transition: all 0.3s ease;
     z-index:2;
 }
 button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 60px #fff,0 0 100px #ff6f61;
+    transform: scale(1.05);
+    box-shadow: 0 0 40px #fff,0 0 60px #ff6f61;
 }
 
 #giftMessage {
     display:none;
-    margin-top: 15px;
-    font-size: 1.5rem;
-    padding: 15px;
+    margin-top: 10px;
+    font-size: 1.3rem;
+    padding: 12px;
     border-radius: 20px;
     background: rgba(255,255,255,0.3);
     color: #fff;
@@ -68,9 +68,9 @@ button:hover {
 /* Cake container */
 #cakeContainer {
     display:none; /* hidden initially */
-    width: 90%;
-    max-width: 500px;
-    margin: 20px auto;
+    width: 80%; /* responsive */
+    max-width: 300px; /* smaller on mobile */
+    margin: 15px auto;
     z-index:2;
 }
 
@@ -83,8 +83,8 @@ button:hover {
 /* Balloons */
 .balloon {
     position: absolute;
-    width: 35px;
-    height: 50px;
+    width: 25px; /* smaller on mobile */
+    height: 40px;
     border-radius: 50%;
     opacity:0.9;
     animation: floatUp linear infinite;
@@ -93,18 +93,18 @@ button:hover {
     content:'';
     position: absolute;
     width:2px;
-    height:30px;
+    height:20px;
     background:#555;
     left:50%;
     transform: translateX(-50%);
-    bottom:-30px;
+    bottom:-20px;
 }
 
 /* Fireworks */
 .firework {
     position:absolute;
-    width:5px;
-    height:5px;
+    width:4px;
+    height:4px;
     border-radius:50%;
     background: yellow;
     animation: explode 1s ease-out forwards;
@@ -118,8 +118,8 @@ button:hover {
 /* Sparkles */
 .sparkle {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: #fff;
     opacity:0.8;
@@ -127,14 +127,14 @@ button:hover {
 }
 @keyframes sparkleAnim {
     0% {transform: translate(0,0) scale(1); opacity:1;}
-    100% {transform: translate(100px,-300px) scale(0); opacity:0;}
+    100% {transform: translate(80px,-250px) scale(0); opacity:0;}
 }
 
 /* Confetti */
 .confetti {
     position: absolute;
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     background: #ff0;
     opacity:0.9;
     animation: confettiFall linear infinite;
@@ -150,6 +150,7 @@ button:hover {
 <h1>🎉 Happy Birthday Princess! 👑🎀</h1>
 <button id="openGift">💖 Open Surprise 💖</button>
 <div id="giftMessage">✨ Wishing you a magical day full of sparkles and happiness! 💕</div>
+
 <svg width="818" height="1121" viewBox="0 0 818 1121" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <rect width="818" height="1121" fill="url(#pattern0_11_3)"/>
 <defs>
@@ -160,7 +161,7 @@ button:hover {
 </defs>
 </svg>
 
-<!-- Cake SVG -->
+
 <div id="cakeContainer">
     <!-- Replace this with your full SVG cake -->
     <svg width="818" height="1121" viewBox="0 0 818 1121" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -185,10 +186,10 @@ button.addEventListener('click', () => {
     gift.style.display = 'block';
     button.style.display = 'none';
     cakeContainer.style.display = 'block'; // show cake
-    createBalloons(25);
-    createSparkles(30);
-    createConfetti(50);
-    launchFireworks(15);
+    createBalloons(20);
+    createSparkles(25);
+    createConfetti(40);
+    launchFireworks(10);
 });
 
 // BALLOONS
@@ -239,8 +240,8 @@ function launchFireworks(count){
         firework.classList.add('firework');
         firework.style.left = Math.random()*window.innerWidth+'px';
         firework.style.top = Math.random()*window.innerHeight/2+'px';
-        firework.style.setProperty('--x',(Math.random()*300-150)+'px');
-        firework.style.setProperty('--y',(Math.random()*300-150)+'px');
+        firework.style.setProperty('--x',(Math.random()*200-100)+'px');
+        firework.style.setProperty('--y',(Math.random()*200-100)+'px');
         document.body.appendChild(firework);
         setTimeout(()=>firework.remove(),1000);
     }
